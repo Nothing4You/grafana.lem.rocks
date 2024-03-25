@@ -1,0 +1,9 @@
+grafana.lem.rocks {
+	tls {
+		protocols tls1.3
+	}
+
+	reverse_proxy {
+		to http://grafana:3000
+	}
+}

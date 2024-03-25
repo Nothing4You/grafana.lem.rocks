@@ -1,0 +1,61 @@
+scrape_configs:
+  - job_name: lemmy-federation-exporter
+    scrape_interval: 5m
+    scrape_timeout: 30s
+    metrics_path: /metrics
+    static_configs:
+      - targets:
+          - lemmy.world
+          - lemm.ee
+          - sh.itjust.works
+          - lemmy.ml
+          - feddit.de
+          - hexbear.net
+          - lemmy.ca
+          - programming.dev
+          - lemmy.dbzer0.com
+          - discuss.tchncs.de
+          - lemmygrad.ml
+          - sopuli.xyz
+          - lemmy.sdf.org
+          - lemmy.zip
+          - aussie.zone
+          - feddit.nl
+          - infosec.pub
+          - reddthat.com
+          - midwest.social
+          - lemmy.one
+          - feddit.uk
+          - slrpnk.net
+          - lemmy.today
+          - pawb.social
+          - startrek.website
+          - jlai.lu
+          - ttrpg.network
+          - mander.xyz
+          - lemmy.eco.br
+          - lemmings.world
+          - lemdro.id
+          - ani.social
+          - lemmy.nz
+          - szmer.info
+          - lemy.lol
+          - discuss.online
+          - iusearchlinux.fyi
+          - feddit.dk
+          - monero.town
+          - feddit.ch
+          - literature.cafe
+          - lemmyf.uk
+          # - dormi.zone # 0.18
+          - toast.ooo
+          - lemmynsfw.com
+          # - pornlemmy.com # 0.18
+          - lemmy.blahaj.zone
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_instance
+      - source_labels: [__param_instance]
+        target_label: instance
+      - target_label: __address__
+        replacement: lemmy-federation-exporter:8080
